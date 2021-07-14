@@ -14,5 +14,10 @@
     <artifactId>pdf-watermark-swing</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>io.github.yakirchen</groupId>
+            <artifactId>pdf-watermark-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
