@@ -1,6 +1,5 @@
 package io.github.yakirchen.watermark.swing.panel;
 
-import io.github.yakirchen.watermark.core.PDFFont;
 import io.github.yakirchen.watermark.swing.entity.WatermarkConf;
 
 import javax.swing.Box;
@@ -26,11 +25,13 @@ import java.util.Optional;
  */
 public class WatermarkConfPanel extends JPanel {
 
-    private final int DEFAULT_ALPHA = 20;
+    private final int   DEFAULT_ALPHA = 20;
+    private final Color DEFAULT_COLOR = new Color(225, 0, 0, DEFAULT_ALPHA);
 
     private JTextField textInput;
     private JSlider    alphaSlider;
     private JSpinner   fontSizeSpinner;
+    private Color      color = DEFAULT_COLOR;
 
     public WatermarkConfPanel() {
         super();
@@ -63,6 +64,12 @@ public class WatermarkConfPanel extends JPanel {
         line0.add(Box.createHorizontalStrut(20));
         line0.add(textInput);
 
+        var colorPreviewLabel = new JLabel("颜色预览Preview");
+        colorPreviewLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+        colorPreviewLabel.setPreferredSize(colorPreviewLabel.getPreferredSize());
+        colorPreviewLabel.setMaximumSize(colorPreviewLabel.getPreferredSize());
+        colorPreviewLabel.setForeground(DEFAULT_COLOR);
+
         var alphaLabel = new JLabel("透明度:");
         alphaLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         alphaLabel.setPreferredSize(labelSize);
@@ -77,6 +84,8 @@ public class WatermarkConfPanel extends JPanel {
         alphaSlider.addChangeListener((ChangeEvent _event) -> {
             var value = alphaSlider.getValue();
             alphaValueLabel.setText(String.valueOf(value));
+            this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), alphaSlider.getValue());
+            colorPreviewLabel.setForeground(color);
         });
 
         line1.add(alphaLabel);
@@ -94,13 +103,6 @@ public class WatermarkConfPanel extends JPanel {
         line2.add(Box.createHorizontalStrut(20));
         line2.add(fontSizeSpinner);
 
-        var defaultColor      = new Color(225, 0, 0, DEFAULT_ALPHA);
-        var colorPreviewLabel = new JLabel("颜色预览Preview");
-        colorPreviewLabel.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
-        colorPreviewLabel.setPreferredSize(colorPreviewLabel.getPreferredSize());
-        colorPreviewLabel.setMaximumSize(colorPreviewLabel.getPreferredSize());
-        colorPreviewLabel.setForeground(defaultColor);
-
         var colorChooserBtn = new JButton("选择字体颜色");
         colorChooserBtn.setHorizontalAlignment(SwingConstants.CENTER);
         colorChooserBtn.setVerticalAlignment(SwingConstants.CENTER);
@@ -108,7 +110,8 @@ public class WatermarkConfPanel extends JPanel {
         colorChooserBtn.setMinimumSize(colorChooserBtn.getPreferredSize());
         colorChooserBtn.setMaximumSize(colorChooserBtn.getPreferredSize());
         colorChooserBtn.addActionListener(_event -> {
-            var color = JColorChooser.showDialog(this, "选择字体颜色", defaultColor);
+            this.color = JColorChooser.showDialog(this, "选择字体颜色", this.color);
+            this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), alphaSlider.getValue());
             colorPreviewLabel.setForeground(color);
         });
 
