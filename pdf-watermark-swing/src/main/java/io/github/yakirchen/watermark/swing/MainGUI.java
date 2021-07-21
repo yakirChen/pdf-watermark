@@ -20,14 +20,11 @@ public class MainGUI {
 
     public static void root() {
 
-        var fontA = PDFFont.loadFont(PDFFont.FONT_A);
-        var fontB = PDFFont.loadFont(PDFFont.FONT_B);
-        if (null != fontA && null != fontB) {
-            GraphicsEnvironment graphicsEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            System.out.println("注册字体 " + PDFFont.FONT_A);
-            graphicsEnv.registerFont(fontA);
-            System.out.println("注册字体 " + PDFFont.FONT_B);
-            graphicsEnv.registerFont(fontB);
+        GraphicsEnvironment graphicsEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+
+        for (String fontName : new String[]{PDFFont.FONT_A, /*PDFFont.FONT_B*/}) {
+            System.out.println("注册字体 " + fontName);
+            graphicsEnv.registerFont(PDFFont.loadFont(fontName));
         }
 
         var frame = new JFrame();
