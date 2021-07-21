@@ -41,7 +41,7 @@ public class PDFRemoveListener implements ActionListener {
 
         System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
 
-        pdfTablePanel.move();
+        pdfTablePanel.del();
     }
 
 }

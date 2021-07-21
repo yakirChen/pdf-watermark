@@ -4,12 +4,12 @@ import io.github.yakirchen.watermark.core.PDFWatermark;
 import io.github.yakirchen.watermark.core.Watermark;
 import io.github.yakirchen.watermark.swing.entity.PDFEntity;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
+import io.github.yakirchen.watermark.swing.panel.WatermarkConfPanel;
 
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * PDFWatermarkListener
@@ -20,7 +20,8 @@ public class PDFWatermarkListener implements ActionListener {
 
     private final Component component;
 
-    private PDFTablePanel pdfTablePanel;
+    private PDFTablePanel      pdfTablePanel;
+    private WatermarkConfPanel confPanel;
 
     private PDFWatermarkListener(Component component) {
         this.component = component;
@@ -30,8 +31,9 @@ public class PDFWatermarkListener implements ActionListener {
         return new PDFWatermarkListener(component);
     }
 
-    public PDFWatermarkListener datasource(PDFTablePanel pdfTablePanel) {
+    public PDFWatermarkListener action(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
         this.pdfTablePanel = pdfTablePanel;
+        this.confPanel     = confPanel;
         return this;
     }
 
@@ -47,27 +49,21 @@ public class PDFWatermarkListener implements ActionListener {
         System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
 
         List<PDFEntity> pdfEntityList = this.pdfTablePanel.getAll();
+        var             watermarkConf = confPanel.action();
 
-        final var text = "你好🙂!";
+        for (int i = 0; i < pdfEntityList.size(); i++) {
 
-        CompletableFuture.completedFuture(pdfEntityList)
-                .thenAccept(_pdfEntityList -> {
-                    for (int i = 0; i < _pdfEntityList.size(); i++) {
+            var pdfEntity = pdfEntityList.get(i);
 
-                        var pdfEntity = _pdfEntityList.get(i);
+            var watermark = new Watermark()
+                    .setOrigin(pdfEntity.getPath())
+                    .setAlpha(watermarkConf.getAlpha() / 255)
+                    .setColorRGB(225, 0, 0)
+                    .setFontSize(watermarkConf.getFontSize())
+                    .setText(watermarkConf.getText());
 
-                        var watermark = new Watermark()
-                                .setOrigin(pdfEntity.getPath())
-                                .setAlpha(0.2f)
-                                .setColorRGB(225, 0, 0)
-                                .setFontSize(130)
-                                .setText(text);
-
-                        PDFWatermark.builder(watermark)
-                                .mark();
-                    }
-                });
-
-
+            PDFWatermark.builder(watermark)
+                    .mark();
+        }
     }
 }

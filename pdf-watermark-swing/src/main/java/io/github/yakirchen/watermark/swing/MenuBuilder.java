@@ -51,7 +51,7 @@ public class MenuBuilder {
     public static void systemTray() {
 
         final PopupMenu  popup    = new PopupMenu();
-        var              icon     = Objects.requireNonNull(ImageUtils.createImage("images/icon.png", "pdf watermark icon"));
+        var              icon     = Objects.requireNonNull(ImageUtils.createImage("icon.png", "pdf watermark icon"));
         final TrayIcon   trayIcon = new TrayIcon(icon, "PDF水印");
         final SystemTray tray     = SystemTray.getSystemTray();
 

@@ -1,12 +1,12 @@
 package io.github.yakirchen.watermark.swing.panel;
 
-import io.github.yakirchen.watermark.swing.ReadonlyTableModel;
 import io.github.yakirchen.watermark.swing.entity.PDFEntity;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,14 +24,17 @@ public class PDFTablePanel extends JScrollPane {
 
     public PDFTablePanel() {
         super();
+
+        this.setPreferredSize(new Dimension(499, 348));
+
         this.pdfTable   = new JTable();
-        this.tableModel = new ReadonlyTableModel();
+        this.tableModel = new TableModelReadonly();
         this.pdfTable.setRowHeight(14);
         this.pdfTable.setModel(tableModel);
         this.pdfTable.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        this.tableModel.setColumnIdentifiers(new Object[]{"名称", "路径"});
-        this.pdfTable.getColumnModel().getColumn(0).setPreferredWidth(220);
-        this.pdfTable.getColumnModel().getColumn(1).setPreferredWidth(380);
+        this.tableModel.setColumnIdentifiers(new Object[]{"文件名", "路径"});
+        this.pdfTable.getColumnModel().getColumn(0).setPreferredWidth(200);
+        this.pdfTable.getColumnModel().getColumn(1).setPreferredWidth(290);
         this.pdfTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         this.setViewportView(this.pdfTable);
         this.setAutoscrolls(true);
@@ -43,7 +46,7 @@ public class PDFTablePanel extends JScrollPane {
         return this;
     }
 
-    public PDFTablePanel move() {
+    public PDFTablePanel del() {
         var selectedRows = this.pdfTable.getSelectedRows();
         selectedRows = Optional.ofNullable(selectedRows).orElse(new int[]{});
 

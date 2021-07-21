@@ -1,6 +1,6 @@
 package io.github.yakirchen.watermark.core;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * TestPDFWatermark
@@ -12,7 +12,7 @@ public class TestPDFWatermark {
     @Test
     public void test0() {
 
-        String origin = "/Users/yakir/Library/Mobile Documents/com~apple~CloudDocs/docs/shushi/泰州石化/Pamirs后端基本概念.pdf";
+        String origin = "/Users/yakir/Developer/think/pdf-watermark/docs/test_0.pdf";
 
         var text = "你好🙂!";
 

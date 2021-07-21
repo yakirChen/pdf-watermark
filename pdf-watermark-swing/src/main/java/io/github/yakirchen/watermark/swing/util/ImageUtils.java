@@ -18,7 +18,7 @@ public class ImageUtils {
         if (null != imageURL) {
             return new ImageIcon(imageURL, description).getImage();
         } else {
-            System.err.println("Resource not found: " + path);
+            System.err.println("资源未找到 " + path);
             return null;
         }
     }

@@ -46,17 +46,15 @@ public class PDFWatermark {
 
                 pdDoc.setAllSecurityToBeRemoved(true);
 
-
-                var classloader  = this.getClass().getClassLoader();
-                var fontHanaMinA = PDType0Font.load(pdDoc, classloader.getResourceAsStream("font/HanaMinA.ttf"));
-                var fontHanaMinB = PDType0Font.load(pdDoc, classloader.getResourceAsStream("font/HanaMinB.ttf"));
+                var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_A));
+//                var fontHanaMinB = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
 
                 for (var page : pdDoc.getPages()) {
                     try (var cs = new PDPageContentStream(pdDoc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {
 
                         var resources = page.getResources();
                         resources.add(fontHanaMinA);
-                        resources.add(fontHanaMinB);
+//                        resources.add(fontHanaMinB);
                         page.setResources(resources);
 
                         var width    = page.getMediaBox().getWidth();
@@ -111,7 +109,9 @@ public class PDFWatermark {
                     targetFile = targetFile.trim();
                     targetFile = targetFile.substring(0, targetFile.length() - 4).concat(Watermark.DEFAULT_SUFFIX).concat(".pdf");
                 }
+
                 pdDoc.save(new File(targetFile));
+                System.out.println(targetFile);
             } catch (IOException exp) {
                 exp.printStackTrace();
             }

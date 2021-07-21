@@ -1,14 +1,14 @@
-package io.github.yakirchen.watermark.swing;
+package io.github.yakirchen.watermark.swing.panel;
 
 import javax.swing.table.DefaultTableModel;
 import java.io.Serial;
 
 /**
- * ReadonlyTableModel
+ * TableModelReadonly
  *
  * @author yakir on 2021/07/14 10:38.
  */
-public class ReadonlyTableModel extends DefaultTableModel {
+public class TableModelReadonly extends DefaultTableModel {
 
     @Serial
     private static final long serialVersionUID = -3441144734432638392L;
