@@ -15,6 +15,7 @@ import java.awt.desktop.AboutEvent;
 public class MacOS {
 
     public static void macOS(JFrame frame) {
+
         Desktop.getDesktop()
                 .setAboutHandler(
                         (AboutEvent e) -> {

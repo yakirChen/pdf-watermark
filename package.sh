@@ -18,4 +18,4 @@ jpackage --input libs/ \
   --icon src/main/resources/icon.icns \
   --java-options '--enable-preview -Xdock:name=PDF水印' \
   --module-path ${JAVA_HOME}/jmods \
-  --add-modules java.desktop
+  --add-modules java.desktop,jdk.unsupported,java.xml,java.logging,jdk.unsupported.desktop
