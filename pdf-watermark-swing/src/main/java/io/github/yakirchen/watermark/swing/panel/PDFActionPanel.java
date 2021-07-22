@@ -7,6 +7,7 @@ import io.github.yakirchen.watermark.swing.listener.PDFWatermarkListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -23,17 +24,19 @@ public class PDFActionPanel extends JPanel {
         this.setPreferredSize(panelSize);
         this.setMaximumSize(panelSize);
         this.setMinimumSize(panelSize);
+        this.setBackground(Color.BLUE);
     }
 
     public PDFActionPanel action(PDFTablePanel pdfTablePanel, WatermarkConfPanel watermarkConfPanel) {
 
-        var btnSize = new Dimension(80, 20);
+        var btnSize = new Dimension(120, 45);
 
         var btnAdd = new JButton("添加PDF");
         btnAdd.addActionListener(PDFChooserListener.bind(btnAdd).datasource(pdfTablePanel));
         btnAdd.setPreferredSize(btnSize);
         btnAdd.setMaximumSize(btnSize);
         btnAdd.setMinimumSize(btnSize);
+        btnAdd.setBackground(Color.cyan);
 
         var btnRemove = new JButton("移除PDF");
         btnRemove.addActionListener(PDFRemoveListener.bind(btnRemove).datasource(pdfTablePanel));
@@ -41,16 +44,20 @@ public class PDFActionPanel extends JPanel {
         btnRemove.setMinimumSize(btnSize);
         btnRemove.setMaximumSize(btnSize);
 
-        var btnWm = new JButton("为全部PDF添加水印");
+        var btnWm = new JButton("生成水印");
         btnWm.setPreferredSize(btnSize);
         btnWm.setMinimumSize(btnSize);
         btnWm.setMaximumSize(btnSize);
         btnWm.addActionListener(PDFWatermarkListener.bind(btnWm).action(pdfTablePanel, watermarkConfPanel));
 
-        var lineSize = new Dimension(480, 40);
+        var lineSize = new Dimension(480, 60);
         var line0    = Box.createHorizontalBox();
+        line0.setMaximumSize(lineSize);
+        line0.setMinimumSize(lineSize);
         line0.setPreferredSize(lineSize);
         var line1 = Box.createHorizontalBox();
+        line1.setMaximumSize(lineSize);
+        line1.setMinimumSize(lineSize);
         line1.setPreferredSize(lineSize);
         var v0 = Box.createVerticalBox();
 
@@ -84,7 +91,9 @@ public class PDFActionPanel extends JPanel {
         line0.add(btnRemoveBox);
         line0.add(Box.createVerticalStrut(10));
 
+        line1.add(Box.createVerticalStrut(10));
         line1.add(btnWmBox);
+        line1.add(Box.createVerticalStrut(10));
 
         v0.add(line0);
         v0.add(Box.createVerticalStrut(10));

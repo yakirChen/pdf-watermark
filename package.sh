@@ -1,5 +1,8 @@
 export JAVA_HOME=$(/usr/libexec/java_home version)
 
+
+export VERSION="1.0.1-SNAPSHOT"
+
 mvn clean install -Dmaven.test.skip=true
 
 cd pdf-watermark-swing
@@ -8,11 +11,11 @@ rm -rf libs
 
 mvn clean package -Dmaven.test.skip=true
 
-cp target/pdf-watermark-swing-1.0.0-SNAPSHOT.jar libs
+cp target/pdf-watermark-swing-${VERSION}.jar libs
 
 jpackage --input libs/ \
   --name PDFWatermark \
-  --main-jar pdf-watermark-swing-1.0.0-SNAPSHOT.jar \
+  --main-jar pdf-watermark-swing-${VERSION}.jar \
   --main-class io.github.yakirchen.watermark.swing.WatermarkApp \
   --type dmg \
   --icon src/main/resources/icon.icns \
