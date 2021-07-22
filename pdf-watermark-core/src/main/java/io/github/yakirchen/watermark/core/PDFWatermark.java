@@ -40,6 +40,8 @@ public class PDFWatermark {
             var fontFamily = watermark.getFontFamily();
             var text       = watermark.getText();
 
+            System.out.printf("水印文字:[%s]\n", text);
+
             var originFile = new File(origin);
 
             try (var pdDoc = Loader.loadPDF(originFile)) {
@@ -47,7 +49,7 @@ public class PDFWatermark {
                 pdDoc.setAllSecurityToBeRemoved(true);
 
                 var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_A));
-//                var fontHanaMinB = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
+//                var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
 
                 for (var page : pdDoc.getPages()) {
                     try (var cs = new PDPageContentStream(pdDoc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {

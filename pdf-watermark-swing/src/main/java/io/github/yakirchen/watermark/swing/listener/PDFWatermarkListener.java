@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * PDFWatermarkListener
@@ -50,6 +51,7 @@ public class PDFWatermarkListener implements ActionListener {
 
         List<PDFEntity> pdfEntityList = this.pdfTablePanel.getAll();
         var             watermarkConf = confPanel.action();
+        var             color         = watermarkConf.getColor();
 
         for (int i = 0; i < pdfEntityList.size(); i++) {
 
@@ -58,12 +60,11 @@ public class PDFWatermarkListener implements ActionListener {
             var watermark = new Watermark()
                     .setOrigin(pdfEntity.getPath())
                     .setAlpha(watermarkConf.getAlpha() / 255)
-                    .setColorRGB(225, 0, 0)
+                    .setColorRGB(color.getRed(), color.getGreen(), color.getBlue())
                     .setFontSize(watermarkConf.getFontSize())
-                    .setText(watermarkConf.getText());
+                    .setText(Optional.ofNullable(watermarkConf.getText()).filter(_text -> !_text.isBlank()).orElse("水印"));
 
-            PDFWatermark.builder(watermark)
-                    .mark();
+            PDFWatermark.builder(watermark).mark();
         }
     }
 }

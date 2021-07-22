@@ -25,7 +25,7 @@ import java.util.Optional;
  */
 public class WatermarkConfPanel extends JPanel {
 
-    private final int   DEFAULT_ALPHA = 20;
+    private final int   DEFAULT_ALPHA = (int) (255 * 0.2);
     private final Color DEFAULT_COLOR = new Color(225, 0, 0, DEFAULT_ALPHA);
 
     private JTextField textInput;
@@ -77,7 +77,7 @@ public class WatermarkConfPanel extends JPanel {
         var alphaValueLabel = new JLabel(String.valueOf(DEFAULT_ALPHA));
         alphaValueLabel.setHorizontalAlignment(SwingConstants.CENTER);
         alphaValueLabel.setPreferredSize(labelSize);
-        this.alphaSlider = new JSlider(1, 255, 2);
+        this.alphaSlider = new JSlider(1, 255, DEFAULT_ALPHA);
         alphaSlider.setMajorTickSpacing(5);
         alphaSlider.setMinorTickSpacing(1);
         alphaSlider.setPaintTicks(true);
@@ -150,6 +150,7 @@ public class WatermarkConfPanel extends JPanel {
         var cfg = new WatermarkConf();
         cfg.setText(this.textInput.getText());
         cfg.setAlpha(this.alphaSlider.getValue());
+        cfg.setColor(this.color);
         cfg.setFontSize(Optional.of(this.fontSizeSpinner.getValue()).map(String::valueOf).map(Integer::valueOf).orElse(130));
         return cfg;
     }
