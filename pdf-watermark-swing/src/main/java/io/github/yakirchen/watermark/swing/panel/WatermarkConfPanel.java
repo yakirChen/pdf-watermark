@@ -1,11 +1,11 @@
 package io.github.yakirchen.watermark.swing.panel;
 
 import io.github.yakirchen.watermark.swing.entity.WatermarkConf;
-import io.github.yakirchen.watermark.swing.listener.WatermarkColorChooserListener;
+import io.github.yakirchen.watermark.swing.listener.ColorAlphaListener;
+import io.github.yakirchen.watermark.swing.listener.ColorChooserListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -25,13 +25,14 @@ import java.util.Optional;
  */
 public class WatermarkConfPanel extends JPanel {
 
-    private final int   DEFAULT_ALPHA = (int) (255 * 0.2);
-    private final Color DEFAULT_COLOR = new Color(225, 0, 0, DEFAULT_ALPHA);
+    private static final int   DEFAULT_ALPHA = (int) (255 * 0.2);
+    private static final Color DEFAULT_COLOR = new Color(225, 0, 0, DEFAULT_ALPHA);
 
     private final JTextField textInput;
     private final JSlider    alphaSlider;
     private final JSpinner   fontSizeSpinner;
-    private       Color    color = DEFAULT_COLOR;
+
+    public static Color color = DEFAULT_COLOR;
 
     public WatermarkConfPanel() {
         super();
@@ -81,7 +82,7 @@ public class WatermarkConfPanel extends JPanel {
         alphaSlider.setMajorTickSpacing(5);
         alphaSlider.setMinorTickSpacing(1);
         alphaSlider.setPaintTicks(true);
-        alphaSlider.addChangeListener(WatermarkColorChooserListener.bind(colorPreviewLabel, alphaValueLabel, alphaSlider, color));
+        alphaSlider.addChangeListener(ColorChooserListener.bind(colorPreviewLabel, alphaValueLabel, alphaSlider));
 
         line1.add(alphaLabel);
         line1.add(Box.createHorizontalStrut(20));
@@ -98,17 +99,14 @@ public class WatermarkConfPanel extends JPanel {
         line2.add(Box.createHorizontalStrut(20));
         line2.add(fontSizeSpinner);
 
-        var colorChooserBtn = new JButton("选择字体颜色");
+        var colorChooserTitle = "选择字体颜色";
+        var colorChooserBtn   = new JButton(colorChooserTitle);
         colorChooserBtn.setHorizontalAlignment(SwingConstants.CENTER);
         colorChooserBtn.setVerticalAlignment(SwingConstants.CENTER);
         colorChooserBtn.setPreferredSize(new Dimension(120, 45));
         colorChooserBtn.setMinimumSize(colorChooserBtn.getPreferredSize());
         colorChooserBtn.setMaximumSize(colorChooserBtn.getPreferredSize());
-        colorChooserBtn.addActionListener(_event -> {
-            this.color = JColorChooser.showDialog(this, "选择字体颜色", this.color);
-            this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), alphaSlider.getValue());
-            colorPreviewLabel.setForeground(color);
-        });
+        colorChooserBtn.addActionListener(ColorAlphaListener.bind(this, colorPreviewLabel, colorChooserTitle, alphaSlider));
 
         var colorBtnBox = Box.createVerticalBox();
         colorBtnBox.setPreferredSize(new Dimension(120, 50));
