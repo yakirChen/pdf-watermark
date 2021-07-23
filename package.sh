@@ -1,7 +1,7 @@
 export JAVA_HOME=$(/usr/libexec/java_home version)
 
 
-export VERSION="1.0.1-SNAPSHOT"
+export VERSION="1.0.2-SNAPSHOT"
 
 mvn clean install -Dmaven.test.skip=true
 

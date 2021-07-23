@@ -7,11 +7,11 @@
     <parent>
         <groupId>io.github.yakirchen</groupId>
         <artifactId>pdf-watermark</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>pdf-watermark-swing</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <properties>
         <main.class>io.github.yakirchen.watermark.swing.WatermarkApp</main.class>
