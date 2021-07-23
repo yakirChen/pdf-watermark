@@ -12,15 +12,14 @@ import java.awt.event.ActionListener;
  */
 public class PDFRemoveListener implements ActionListener {
 
-    private PDFTablePanel pdfTablePanel;
+    private final PDFTablePanel pdfTablePanel;
 
     private PDFRemoveListener(PDFTablePanel pdfTablePanel) {
         this.pdfTablePanel = pdfTablePanel;
     }
 
     public static PDFRemoveListener bind(PDFTablePanel pdfTablePanel) {
-        var listener = new PDFRemoveListener(pdfTablePanel);
-        return listener;
+        return new PDFRemoveListener(pdfTablePanel);
     }
 
     @Override

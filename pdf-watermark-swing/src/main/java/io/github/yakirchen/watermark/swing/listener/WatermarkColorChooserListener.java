@@ -13,10 +13,11 @@ import java.awt.Color;
  */
 public class WatermarkColorChooserListener implements ChangeListener {
 
-    private JLabel  colorPreviewLabel;
-    private JLabel  alphaValueLabel;
-    private Color   color;
-    private JSlider alphaSlider;
+    private final JLabel  colorPreviewLabel;
+    private final JLabel  alphaValueLabel;
+    private final JSlider alphaSlider;
+
+    private Color color;
 
     private WatermarkColorChooserListener(JLabel colorPreviewLabel,
                                           JLabel alphaValueLabel,

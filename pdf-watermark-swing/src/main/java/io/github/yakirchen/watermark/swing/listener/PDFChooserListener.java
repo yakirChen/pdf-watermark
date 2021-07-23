@@ -17,18 +17,16 @@ import java.io.File;
  */
 public class PDFChooserListener implements ActionListener {
 
-    private final Component component;
+    private final Component     component;
+    private final PDFTablePanel pdfTablePanel;
 
-    private PDFTablePanel pdfTablePanel;
-
-    private PDFChooserListener(Component component) {
-        this.component = component;
+    private PDFChooserListener(Component component, PDFTablePanel pdfTablePanel) {
+        this.component     = component;
+        this.pdfTablePanel = pdfTablePanel;
     }
 
     public static PDFChooserListener bind(Component component, PDFTablePanel pdfTablePanel) {
-        var listener = new PDFChooserListener(component);
-        listener.pdfTablePanel = pdfTablePanel;
-        return listener;
+        return new PDFChooserListener(component, pdfTablePanel);
     }
 
     @Override

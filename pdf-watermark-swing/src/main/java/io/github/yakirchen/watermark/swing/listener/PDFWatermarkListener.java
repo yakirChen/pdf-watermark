@@ -6,7 +6,6 @@ import io.github.yakirchen.watermark.swing.entity.PDFEntity;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 import io.github.yakirchen.watermark.swing.panel.WatermarkConfPanel;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -19,8 +18,8 @@ import java.util.Optional;
  */
 public class PDFWatermarkListener implements ActionListener {
 
-    private PDFTablePanel      pdfTablePanel;
-    private WatermarkConfPanel confPanel;
+    private final PDFTablePanel      pdfTablePanel;
+    private final WatermarkConfPanel confPanel;
 
     private PDFWatermarkListener(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
         this.pdfTablePanel = pdfTablePanel;
