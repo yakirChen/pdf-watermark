@@ -13,7 +13,6 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
-import javax.swing.event.ChangeEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -83,12 +82,6 @@ public class WatermarkConfPanel extends JPanel {
         alphaSlider.setMinorTickSpacing(1);
         alphaSlider.setPaintTicks(true);
         alphaSlider.addChangeListener(WatermarkColorChooserListener.bind(colorPreviewLabel, alphaValueLabel, alphaSlider, color));
-        alphaSlider.addChangeListener((ChangeEvent _event) -> {
-            var value = alphaSlider.getValue();
-            alphaValueLabel.setText(String.valueOf(value));
-            this.color = new Color(color.getRed(), color.getGreen(), color.getBlue(), alphaSlider.getValue());
-            colorPreviewLabel.setForeground(color);
-        });
 
         line1.add(alphaLabel);
         line1.add(Box.createHorizontalStrut(20));
