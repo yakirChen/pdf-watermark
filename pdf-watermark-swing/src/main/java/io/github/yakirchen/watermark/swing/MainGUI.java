@@ -39,22 +39,22 @@ public class MainGUI {
 
         var pdfTablePanel   = new PDFTablePanel();
         var pdfConfigPanel  = new WatermarkConfPanel();
-        var pdfActionPanel  = new PDFActionPanel().action(pdfTablePanel, pdfConfigPanel);
         var pdfPreviewPanel = new PDFPreviewPanel();
+        var pdfActionPanel  = new PDFActionPanel().action(pdfTablePanel, pdfConfigPanel);
 
-        // 垂直 容纳所有
-        var vbox0 = Box.createVerticalBox();
+        // 水平 容纳所有
+        var vbox0 = Box.createHorizontalBox();
 
-        // 水平 容纳table、预览
-        var hbox0 = Box.createHorizontalBox();
-        // 水平 容纳配置、动作
-        var hbox1 = Box.createHorizontalBox();
+        // 垂直 容纳table、预览
+        var hbox0 = Box.createVerticalBox();
+        // 垂直 容纳配置、动作
+        var hbox1 = Box.createVerticalBox();
 
         hbox0.add(pdfTablePanel);
         hbox0.add(Box.createVerticalStrut(1));
-        hbox0.add(pdfPreviewPanel);
+        hbox0.add(pdfConfigPanel);
 
-        hbox1.add(pdfConfigPanel);
+        hbox1.add(pdfPreviewPanel);
         hbox1.add(Box.createVerticalStrut(1));
         hbox1.add(pdfActionPanel);
 

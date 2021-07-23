@@ -19,23 +19,16 @@ import java.util.Optional;
  */
 public class PDFWatermarkListener implements ActionListener {
 
-    private final Component component;
-
     private PDFTablePanel      pdfTablePanel;
     private WatermarkConfPanel confPanel;
 
-    private PDFWatermarkListener(Component component) {
-        this.component = component;
-    }
-
-    public static PDFWatermarkListener bind(Component component) {
-        return new PDFWatermarkListener(component);
-    }
-
-    public PDFWatermarkListener action(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
+    private PDFWatermarkListener(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
         this.pdfTablePanel = pdfTablePanel;
         this.confPanel     = confPanel;
-        return this;
+    }
+
+    public static PDFWatermarkListener bind(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
+        return new PDFWatermarkListener(pdfTablePanel, confPanel);
     }
 
     @Override

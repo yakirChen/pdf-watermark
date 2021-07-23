@@ -25,13 +25,10 @@ public class PDFChooserListener implements ActionListener {
         this.component = component;
     }
 
-    public static PDFChooserListener bind(Component component) {
-        return new PDFChooserListener(component);
-    }
-
-    public PDFChooserListener datasource(PDFTablePanel pdfTablePanel) {
-        this.pdfTablePanel = pdfTablePanel;
-        return this;
+    public static PDFChooserListener bind(Component component, PDFTablePanel pdfTablePanel) {
+        var listener = new PDFChooserListener(component);
+        listener.pdfTablePanel = pdfTablePanel;
+        return listener;
     }
 
     @Override

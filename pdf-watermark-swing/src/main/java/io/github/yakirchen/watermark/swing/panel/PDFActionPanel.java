@@ -24,7 +24,6 @@ public class PDFActionPanel extends JPanel {
         this.setPreferredSize(panelSize);
         this.setMaximumSize(panelSize);
         this.setMinimumSize(panelSize);
-        this.setBackground(Color.BLUE);
     }
 
     public PDFActionPanel action(PDFTablePanel pdfTablePanel, WatermarkConfPanel watermarkConfPanel) {
@@ -32,14 +31,14 @@ public class PDFActionPanel extends JPanel {
         var btnSize = new Dimension(120, 45);
 
         var btnAdd = new JButton("添加PDF");
-        btnAdd.addActionListener(PDFChooserListener.bind(btnAdd).datasource(pdfTablePanel));
+        btnAdd.addActionListener(PDFChooserListener.bind(btnAdd, pdfTablePanel));
         btnAdd.setPreferredSize(btnSize);
         btnAdd.setMaximumSize(btnSize);
         btnAdd.setMinimumSize(btnSize);
         btnAdd.setBackground(Color.cyan);
 
         var btnRemove = new JButton("移除PDF");
-        btnRemove.addActionListener(PDFRemoveListener.bind(btnRemove).datasource(pdfTablePanel));
+        btnRemove.addActionListener(PDFRemoveListener.bind(pdfTablePanel));
         btnRemove.setPreferredSize(btnSize);
         btnRemove.setMinimumSize(btnSize);
         btnRemove.setMaximumSize(btnSize);
@@ -48,7 +47,7 @@ public class PDFActionPanel extends JPanel {
         btnWm.setPreferredSize(btnSize);
         btnWm.setMinimumSize(btnSize);
         btnWm.setMaximumSize(btnSize);
-        btnWm.addActionListener(PDFWatermarkListener.bind(btnWm).action(pdfTablePanel, watermarkConfPanel));
+        btnWm.addActionListener(PDFWatermarkListener.bind(pdfTablePanel, watermarkConfPanel));
 
         var lineSize = new Dimension(480, 60);
         var line0    = Box.createHorizontalBox();

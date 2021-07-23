@@ -2,7 +2,6 @@ package io.github.yakirchen.watermark.swing.listener;
 
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,22 +12,15 @@ import java.awt.event.ActionListener;
  */
 public class PDFRemoveListener implements ActionListener {
 
-    private final Component component;
-
     private PDFTablePanel pdfTablePanel;
 
-    private PDFRemoveListener(Component component) {
-        this.component = component;
-    }
-
-
-    public static PDFRemoveListener bind(Component component) {
-        return new PDFRemoveListener(component);
-    }
-
-    public PDFRemoveListener datasource(PDFTablePanel pdfTablePanel) {
+    private PDFRemoveListener(PDFTablePanel pdfTablePanel) {
         this.pdfTablePanel = pdfTablePanel;
-        return this;
+    }
+
+    public static PDFRemoveListener bind(PDFTablePanel pdfTablePanel) {
+        var listener = new PDFRemoveListener(pdfTablePanel);
+        return listener;
     }
 
     @Override

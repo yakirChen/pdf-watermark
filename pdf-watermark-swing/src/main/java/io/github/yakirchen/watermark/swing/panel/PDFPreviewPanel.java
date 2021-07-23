@@ -12,7 +12,7 @@ public class PDFPreviewPanel extends JPanel {
 
     public PDFPreviewPanel() {
         super();
-        var panelSize = new Dimension(360, 348);
+        var panelSize = new Dimension(360, 420);
         this.setPreferredSize(panelSize);
         this.setMaximumSize(panelSize);
         this.setMinimumSize(panelSize);

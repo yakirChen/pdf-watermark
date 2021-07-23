@@ -35,12 +35,12 @@ public class MenuBuilder {
         JMenuItem addMenuItem = new JMenuItem("添加PDF", KeyEvent.VK_O);
         addMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.META_DOWN_MASK));
         addMenuItem.getAccessibleContext().setAccessibleDescription("打开需要加水印的PDF");
-        addMenuItem.addActionListener(PDFChooserListener.bind(addMenuItem).datasource(pdfTablePanel));
+        addMenuItem.addActionListener(PDFChooserListener.bind(addMenuItem, pdfTablePanel));
 
         JMenuItem removeMenuItem = new JMenuItem("移除PDF", KeyEvent.VK_BACK_SPACE);
         removeMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0));
         removeMenuItem.getAccessibleContext().setAccessibleDescription("打开需要加水印的PDF");
-        removeMenuItem.addActionListener(PDFRemoveListener.bind(removeMenuItem).datasource(pdfTablePanel));
+        removeMenuItem.addActionListener(PDFRemoveListener.bind(pdfTablePanel));
 
         menu.add(addMenuItem);
         menu.add(removeMenuItem);

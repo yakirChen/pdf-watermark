@@ -1,6 +1,7 @@
 package io.github.yakirchen.watermark.swing.panel;
 
 import io.github.yakirchen.watermark.swing.entity.WatermarkConf;
+import io.github.yakirchen.watermark.swing.listener.WatermarkColorChooserListener;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -81,6 +82,7 @@ public class WatermarkConfPanel extends JPanel {
         alphaSlider.setMajorTickSpacing(5);
         alphaSlider.setMinorTickSpacing(1);
         alphaSlider.setPaintTicks(true);
+        alphaSlider.addChangeListener(WatermarkColorChooserListener.bind(colorPreviewLabel, alphaValueLabel, alphaSlider, color));
         alphaSlider.addChangeListener((ChangeEvent _event) -> {
             var value = alphaSlider.getValue();
             alphaValueLabel.setText(String.valueOf(value));
