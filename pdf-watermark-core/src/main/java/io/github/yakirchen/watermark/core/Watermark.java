@@ -18,6 +18,7 @@ import java.io.Serializable;
  *
  * @author yakir on 2021/07/08 22:03.
  */
+@SuppressWarnings("unused")
 public class Watermark implements Serializable {
 
     @Serial

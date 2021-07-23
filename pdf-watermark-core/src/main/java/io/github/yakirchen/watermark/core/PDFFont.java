@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class PDFFont {
 
     public static final String FONT_A = "HanaMinA.ttf";
-    public static final String FONT_B = "HanaMinB.ttf";
+//    public static final String FONT_B = "HanaMinB.ttf";
 
     private final static ClassLoader classloader = PDFFont.class.getClassLoader();
 

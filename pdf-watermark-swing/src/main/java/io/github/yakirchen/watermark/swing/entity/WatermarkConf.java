@@ -9,6 +9,7 @@ import java.io.Serializable;
  *
  * @author yakir on 2021/07/19 21:11.
  */
+@SuppressWarnings("unused")
 public class WatermarkConf implements Serializable {
 
     @Serial

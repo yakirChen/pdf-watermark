@@ -21,24 +21,18 @@ public class PDFWatermark {
         return new PDFWatermarkBuilder(watermark);
     }
 
-    public static class PDFWatermarkBuilder {
-
-        private final Watermark watermark;
-
-        public PDFWatermarkBuilder(Watermark watermark) {
-            this.watermark = watermark;
-        }
+    public record PDFWatermarkBuilder(Watermark watermark) {
 
         public void mark() {
 
-            var origin     = watermark.getOrigin();
-            var override   = watermark.getOverride();
-            var suffix     = watermark.getSuffix();
-            var alpha      = watermark.getAlpha();
-            var color      = watermark.getColorRGB();
-            var fontSize   = watermark.getFontSize();
-            var fontFamily = watermark.getFontFamily();
-            var text       = watermark.getText();
+            var origin   = watermark.getOrigin();
+            var override = watermark.getOverride();
+            //            var suffix     = watermark.getSuffix();
+            var alpha    = watermark.getAlpha();
+            var color    = watermark.getColorRGB();
+            var fontSize = watermark.getFontSize();
+            //            var fontFamily = watermark.getFontFamily();
+            var text = watermark.getText();
 
             System.out.printf("水印文字:[%s]\n", text);
 
@@ -49,14 +43,14 @@ public class PDFWatermark {
                 pdDoc.setAllSecurityToBeRemoved(true);
 
                 var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_A));
-//                var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
+                //                var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
 
                 for (var page : pdDoc.getPages()) {
                     try (var cs = new PDPageContentStream(pdDoc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {
 
                         var resources = page.getResources();
                         resources.add(fontHanaMinA);
-//                        resources.add(fontHanaMinB);
+                        //                        resources.add(fontHanaMinB);
                         page.setResources(resources);
 
                         var width    = page.getMediaBox().getWidth();
