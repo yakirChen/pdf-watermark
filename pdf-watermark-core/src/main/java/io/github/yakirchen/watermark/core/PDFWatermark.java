@@ -23,7 +23,7 @@ public class PDFWatermark {
 
     public static class PDFWatermarkBuilder {
 
-        private Watermark watermark;
+        private final Watermark watermark;
 
         public PDFWatermarkBuilder(Watermark watermark) {
             this.watermark = watermark;

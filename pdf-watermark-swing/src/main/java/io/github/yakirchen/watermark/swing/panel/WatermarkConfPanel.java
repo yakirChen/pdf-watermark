@@ -28,10 +28,10 @@ public class WatermarkConfPanel extends JPanel {
     private final int   DEFAULT_ALPHA = (int) (255 * 0.2);
     private final Color DEFAULT_COLOR = new Color(225, 0, 0, DEFAULT_ALPHA);
 
-    private JTextField textInput;
-    private JSlider    alphaSlider;
-    private JSpinner   fontSizeSpinner;
-    private Color      color = DEFAULT_COLOR;
+    private final JTextField textInput;
+    private final JSlider    alphaSlider;
+    private final JSpinner   fontSizeSpinner;
+    private       Color    color = DEFAULT_COLOR;
 
     public WatermarkConfPanel() {
         super();

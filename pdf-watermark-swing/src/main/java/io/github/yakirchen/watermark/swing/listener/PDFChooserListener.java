@@ -34,7 +34,6 @@ public class PDFChooserListener implements ActionListener {
         var actionCommand = event.getActionCommand();
         var modifiers     = event.getModifiers();
         var when          = event.getWhen();
-        var source        = event.getSource();
         var id            = event.getID();
 
         System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);

@@ -16,15 +16,7 @@ import java.util.Optional;
  *
  * @author yakir on 2021/07/14 18:15.
  */
-public class PDFWatermarkListener implements ActionListener {
-
-    private final PDFTablePanel      pdfTablePanel;
-    private final WatermarkConfPanel confPanel;
-
-    private PDFWatermarkListener(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
-        this.pdfTablePanel = pdfTablePanel;
-        this.confPanel     = confPanel;
-    }
+public record PDFWatermarkListener(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) implements ActionListener {
 
     public static PDFWatermarkListener bind(PDFTablePanel pdfTablePanel, WatermarkConfPanel confPanel) {
         return new PDFWatermarkListener(pdfTablePanel, confPanel);
@@ -36,7 +28,6 @@ public class PDFWatermarkListener implements ActionListener {
         var actionCommand = event.getActionCommand();
         var modifiers     = event.getModifiers();
         var when          = event.getWhen();
-        var source        = event.getSource();
         var id            = event.getID();
 
         System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
@@ -45,9 +36,7 @@ public class PDFWatermarkListener implements ActionListener {
         var             watermarkConf = confPanel.action();
         var             color         = watermarkConf.getColor();
 
-        for (int i = 0; i < pdfEntityList.size(); i++) {
-
-            var pdfEntity = pdfEntityList.get(i);
+        for (PDFEntity pdfEntity : pdfEntityList) {
 
             var watermark = new Watermark()
                     .setOrigin(pdfEntity.getPath())
