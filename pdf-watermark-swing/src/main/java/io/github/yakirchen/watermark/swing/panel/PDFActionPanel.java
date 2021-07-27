@@ -1,5 +1,6 @@
 package io.github.yakirchen.watermark.swing.panel;
 
+import io.github.yakirchen.watermark.swing.BoxBuilder;
 import io.github.yakirchen.watermark.swing.listener.PDFChooserListener;
 import io.github.yakirchen.watermark.swing.listener.PDFRemoveListener;
 import io.github.yakirchen.watermark.swing.listener.PDFWatermarkListener;
@@ -50,31 +51,21 @@ public class PDFActionPanel extends JPanel {
         btnWm.addActionListener(PDFWatermarkListener.bind(pdfTablePanel, watermarkConfPanel));
 
         var lineSize = new Dimension(480, 60);
-        var line0    = Box.createHorizontalBox();
-        line0.setMaximumSize(lineSize);
-        line0.setMinimumSize(lineSize);
-        line0.setPreferredSize(lineSize);
-        var line1 = Box.createHorizontalBox();
-        line1.setMaximumSize(lineSize);
-        line1.setMinimumSize(lineSize);
-        line1.setPreferredSize(lineSize);
-        var v0 = Box.createVerticalBox();
+        var line0    = BoxBuilder.horizontalBox(lineSize);
+        var line1    = BoxBuilder.horizontalBox(lineSize);
+        var v0       = Box.createVerticalBox();
 
-        var btnAddBox = Box.createVerticalBox();
-        btnAddBox.setPreferredSize(btnSize);
-        btnAddBox.setMaximumSize(btnAddBox.getPreferredSize());
-        btnAddBox.setMinimumSize(btnAddBox.getPreferredSize());
-        btnAddBox.add(Box.createVerticalGlue());
-        btnAddBox.add(btnAdd);
-        btnAddBox.add(Box.createVerticalGlue());
+        var btnAddBox = BoxBuilder.verticalBox(btnSize)
+                .addVerticalGlue()
+                .add(btnAdd)
+                .addVerticalGlue()
+                .get();
 
-        var btnRemoveBox = Box.createVerticalBox();
-        btnRemoveBox.setPreferredSize(btnSize);
-        btnRemoveBox.setMaximumSize(btnRemoveBox.getPreferredSize());
-        btnRemoveBox.setMinimumSize(btnRemoveBox.getPreferredSize());
-        btnRemoveBox.add(Box.createVerticalGlue());
-        btnRemoveBox.add(btnRemove);
-        btnRemoveBox.add(Box.createVerticalGlue());
+        var btnRemoveBox = BoxBuilder.verticalBox(btnSize)
+                .addVerticalGlue()
+                .add(btnRemove)
+                .addVerticalGlue()
+                .get();
 
         var btnWmBox = Box.createVerticalBox();
         btnWmBox.setPreferredSize(btnSize);
@@ -84,19 +75,19 @@ public class PDFActionPanel extends JPanel {
         btnWmBox.add(btnWm);
         btnWmBox.add(Box.createVerticalGlue());
 
-        line0.add(Box.createVerticalStrut(10));
+        line0.addVerticalStrut(10);
         line0.add(btnAddBox);
-        line0.add(Box.createVerticalStrut(10));
+        line0.addVerticalStrut(10);
         line0.add(btnRemoveBox);
-        line0.add(Box.createVerticalStrut(10));
+        line0.addVerticalStrut(10);
 
-        line1.add(Box.createVerticalStrut(10));
+        line1.addVerticalStrut(10);
         line1.add(btnWmBox);
-        line1.add(Box.createVerticalStrut(10));
+        line1.addVerticalStrut(10);
 
-        v0.add(line0);
+        v0.add(line0.get());
         v0.add(Box.createVerticalStrut(10));
-        v0.add(line1);
+        v0.add(line1.get());
 
         this.add(v0);
 

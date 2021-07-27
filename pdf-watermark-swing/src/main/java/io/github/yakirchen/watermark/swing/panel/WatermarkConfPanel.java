@@ -1,5 +1,6 @@
 package io.github.yakirchen.watermark.swing.panel;
 
+import io.github.yakirchen.watermark.swing.BoxBuilder;
 import io.github.yakirchen.watermark.swing.entity.WatermarkConf;
 import io.github.yakirchen.watermark.swing.listener.ColorAlphaListener;
 import io.github.yakirchen.watermark.swing.listener.ColorChooserListener;
@@ -45,15 +46,11 @@ public class WatermarkConfPanel extends JPanel {
         var inputSize        = new Dimension(120, 40);
         var colorChooserSize = new Dimension(480, 50);
 
-        var line0 = Box.createHorizontalBox();
-        line0.setPreferredSize(lineSize);
-        var line1 = Box.createHorizontalBox();
-        line1.setPreferredSize(lineSize);
-        var line2 = Box.createHorizontalBox();
-        line2.setPreferredSize(lineSize);
-        var line3 = Box.createHorizontalBox();
-        line3.setPreferredSize(colorChooserSize);
-        var root = Box.createVerticalBox();
+        var line0 = BoxBuilder.horizontalBox(lineSize);
+        var line1 = BoxBuilder.horizontalBox(lineSize);
+        var line2 = BoxBuilder.horizontalBox(lineSize);
+        var line3 = BoxBuilder.horizontalBox(lineSize);
+        var root  = Box.createVerticalBox();
 
         var textLabel = new JLabel("文字:");
         textLabel.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -62,7 +59,7 @@ public class WatermarkConfPanel extends JPanel {
         textInput.setPreferredSize(inputSize);
 
         line0.add(textLabel);
-        line0.add(Box.createHorizontalStrut(20));
+        line0.addHorizontalStrut(20);
         line0.add(textInput);
 
         var colorPreviewLabel = new JLabel("颜色预览Preview");
@@ -85,9 +82,9 @@ public class WatermarkConfPanel extends JPanel {
         alphaSlider.addChangeListener(ColorChooserListener.bind(colorPreviewLabel, alphaValueLabel, alphaSlider));
 
         line1.add(alphaLabel);
-        line1.add(Box.createHorizontalStrut(20));
+        line1.addHorizontalStrut(20);
         line1.add(alphaSlider);
-        line1.add(Box.createHorizontalStrut(10));
+        line1.addHorizontalStrut(10);
         line1.add(alphaValueLabel);
 
         var fontSizeLabel = new JLabel("字体大小:");
@@ -96,7 +93,7 @@ public class WatermarkConfPanel extends JPanel {
         this.fontSizeSpinner = new JSpinner(new SpinnerNumberModel(130, 0, Integer.MAX_VALUE, 10));
 
         line2.add(fontSizeLabel);
-        line2.add(Box.createHorizontalStrut(20));
+        line2.addHorizontalStrut(20);
         line2.add(fontSizeSpinner);
 
         var colorChooserTitle = "选择字体颜色";
@@ -123,17 +120,17 @@ public class WatermarkConfPanel extends JPanel {
         colorPreviewBox.add(colorPreviewLabel);
 
         line3.add(colorBtnBox);
-        line3.add(Box.createHorizontalStrut(50));
+        line3.addHorizontalStrut(50);
         line3.add(colorPreviewBox);
 
         root.add(Box.createVerticalStrut(10));
-        root.add(line0);
+        root.add(line0.get());
         root.add(Box.createVerticalStrut(10));
-        root.add(line1);
+        root.add(line1.get());
         root.add(Box.createVerticalStrut(10));
-        root.add(line2);
+        root.add(line2.get());
         root.add(Box.createVerticalStrut(10));
-        root.add(line3);
+        root.add(line3.get());
         root.add(Box.createVerticalStrut(10));
 
         this.add(root);
