@@ -50,11 +50,6 @@ public class PDFActionPanel extends JPanel {
         btnWm.setMaximumSize(btnSize);
         btnWm.addActionListener(PDFWatermarkListener.bind(pdfTablePanel, watermarkConfPanel));
 
-        var lineSize = new Dimension(480, 60);
-        var line0    = BoxBuilder.horizontalBox(lineSize);
-        var line1    = BoxBuilder.horizontalBox(lineSize);
-        var v0       = Box.createVerticalBox();
-
         var btnAddBox = BoxBuilder.verticalBox(btnSize)
                 .addVerticalGlue()
                 .add(btnAdd)
@@ -75,17 +70,23 @@ public class PDFActionPanel extends JPanel {
         btnWmBox.add(btnWm);
         btnWmBox.add(Box.createVerticalGlue());
 
-        line0.addVerticalStrut(10);
-        line0.add(btnAddBox);
-        line0.addVerticalStrut(10);
-        line0.add(btnRemoveBox);
-        line0.addVerticalStrut(10);
+        var lineSize = new Dimension(480, 60);
+        var v0       = Box.createVerticalBox();
 
-        line1.addVerticalStrut(10);
-        line1.add(btnWmBox);
-        line1.addVerticalStrut(10);
+        var line0 = BoxBuilder.horizontalBox(lineSize)
+                .addVerticalStrut(10)
+                .add(btnAddBox)
+                .addVerticalStrut(10)
+                .add(btnRemoveBox)
+                .addVerticalStrut(10)
+                .get();
 
-        v0.add(line0.get());
+        var line1 = BoxBuilder.horizontalBox(lineSize)
+                .addVerticalStrut(10)
+                .add(btnWmBox)
+                .addVerticalStrut(10);
+
+        v0.add(line0);
         v0.add(Box.createVerticalStrut(10));
         v0.add(line1.get());
 

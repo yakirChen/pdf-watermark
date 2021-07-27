@@ -43,7 +43,7 @@ public class BoxBuilder {
         return this;
     }
 
-    public BoxBuilder addHorizontalBox() {
+    public BoxBuilder addHorizontalGlue() {
         this.box.add(Box.createHorizontalGlue());
         return this;
     }
