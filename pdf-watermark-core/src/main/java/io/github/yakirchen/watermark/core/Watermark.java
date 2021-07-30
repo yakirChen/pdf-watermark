@@ -27,6 +27,7 @@ public class Watermark implements Serializable {
     public static final String DEFAULT_SUFFIX = "watermark";
 
     private String  origin;
+    private byte[]  originBytes;
     private Boolean override = false;
     private String  suffix;
     private float   alpha;
@@ -41,6 +42,15 @@ public class Watermark implements Serializable {
 
     public Watermark setOrigin(String origin) {
         this.origin = origin;
+        return this;
+    }
+
+    public byte[] getOriginBytes() {
+        return originBytes;
+    }
+
+    public Watermark setOriginBytes(byte[] originBytes) {
+        this.originBytes = originBytes;
         return this;
     }
 

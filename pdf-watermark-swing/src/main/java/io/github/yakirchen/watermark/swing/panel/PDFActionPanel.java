@@ -2,6 +2,7 @@ package io.github.yakirchen.watermark.swing.panel;
 
 import io.github.yakirchen.watermark.swing.BoxBuilder;
 import io.github.yakirchen.watermark.swing.listener.PDFChooserListener;
+import io.github.yakirchen.watermark.swing.listener.PDFPreviewListener;
 import io.github.yakirchen.watermark.swing.listener.PDFRemoveListener;
 import io.github.yakirchen.watermark.swing.listener.PDFWatermarkListener;
 
@@ -27,7 +28,7 @@ public class PDFActionPanel extends JPanel {
         this.setMinimumSize(panelSize);
     }
 
-    public PDFActionPanel action(PDFTablePanel pdfTablePanel, WatermarkConfPanel watermarkConfPanel) {
+    public PDFActionPanel action(PDFTablePanel pdfTablePanel, WatermarkConfPanel watermarkConfPanel, PDFPreviewPanel pdfPreviewPanel) {
 
         var btnSize = new Dimension(120, 45);
 
@@ -50,25 +51,32 @@ public class PDFActionPanel extends JPanel {
         btnWm.setMaximumSize(btnSize);
         btnWm.addActionListener(PDFWatermarkListener.bind(pdfTablePanel, watermarkConfPanel));
 
+        var previewWm = new JButton("预览");
+        previewWm.setPreferredSize(btnSize);
+        previewWm.setMinimumSize(btnSize);
+        previewWm.setMaximumSize(btnSize);
+        previewWm.addActionListener(PDFPreviewListener.bind(pdfPreviewPanel, watermarkConfPanel));
+
         var btnAddBox = BoxBuilder.verticalBox(btnSize)
                 .addVerticalGlue()
                 .add(btnAdd)
                 .addVerticalGlue()
                 .get();
-
         var btnRemoveBox = BoxBuilder.verticalBox(btnSize)
                 .addVerticalGlue()
                 .add(btnRemove)
                 .addVerticalGlue()
                 .get();
-
-        var btnWmBox = Box.createVerticalBox();
-        btnWmBox.setPreferredSize(btnSize);
-        btnWmBox.setMaximumSize(btnWmBox.getPreferredSize());
-        btnWmBox.setMinimumSize(btnWmBox.getPreferredSize());
-        btnWmBox.add(Box.createVerticalGlue());
-        btnWmBox.add(btnWm);
-        btnWmBox.add(Box.createVerticalGlue());
+        var btnWmBox = BoxBuilder.verticalBox(btnSize)
+                .addVerticalGlue()
+                .add(btnWm)
+                .addVerticalGlue()
+                .get();
+        var previewWmBox = BoxBuilder.verticalBox(btnSize)
+                .addVerticalGlue()
+                .add(previewWm)
+                .addVerticalGlue()
+                .get();
 
         var lineSize = new Dimension(480, 60);
         var v0       = Box.createVerticalBox();
@@ -84,11 +92,14 @@ public class PDFActionPanel extends JPanel {
         var line1 = BoxBuilder.horizontalBox(lineSize)
                 .addVerticalStrut(10)
                 .add(btnWmBox)
-                .addVerticalStrut(10);
+                .addVerticalStrut(10)
+                .add(previewWmBox)
+                .addVerticalStrut(10)
+                .get();
 
         v0.add(line0);
         v0.add(Box.createVerticalStrut(10));
-        v0.add(line1.get());
+        v0.add(line1);
 
         this.add(v0);
 

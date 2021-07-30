@@ -40,7 +40,7 @@ public class MainGUI {
         var pdfTablePanel   = new PDFTablePanel();
         var pdfConfigPanel  = new WatermarkConfPanel();
         var pdfPreviewPanel = new PDFPreviewPanel();
-        var pdfActionPanel  = new PDFActionPanel().action(pdfTablePanel, pdfConfigPanel);
+        var pdfActionPanel  = new PDFActionPanel().action(pdfTablePanel, pdfConfigPanel, pdfPreviewPanel);
 
         // 水平 容纳所有
         var vbox0 = Box.createHorizontalBox();
