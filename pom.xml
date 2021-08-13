@@ -13,10 +13,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <maven.compiler.release>17</maven.compiler.release>
-
         <maven.toolchains.version>3.0.0</maven.toolchains.version>
         <maven.jar.version>3.2.0</maven.jar.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
@@ -26,7 +22,6 @@
 
         <pdf.watermark.version>1.0.2-SNAPSHOT</pdf.watermark.version>
         <pdfbox.version>3.0.0-RC1</pdfbox.version>
-        <javafx.version>17-ea+16</javafx.version>
         <log4j.version>2.14.1</log4j.version>
         <junit5.version>5.7.2</junit5.version>
     </properties>
@@ -90,6 +85,33 @@
     </dependencyManagement>
 
     <profiles>
+        <!-- jdk version -->
+        <profile>
+            <id>17</id>
+            <activation>
+                <jdk>17</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+                <maven.compiler.release>17</maven.compiler.release>
+                <javafx.version>17-ea+16</javafx.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>18</id>
+            <activation>
+                <jdk>18</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>18</maven.compiler.source>
+                <maven.compiler.target>18</maven.compiler.target>
+                <maven.compiler.release>18</maven.compiler.release>
+                <javafx.version>18-ea+1</javafx.version>
+            </properties>
+        </profile>
+
+        <!-- os -->
         <profile>
             <id>linux</id>
             <activation>

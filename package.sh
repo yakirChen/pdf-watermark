@@ -1,5 +1,10 @@
-export JAVA_HOME=$(/usr/libexec/java_home version)
+version=$1
 
+echo "JDK version $version"
+
+export JAVA_HOME=`/usr/libexec/java_home -v $version`
+
+echo "JAVA_HOME $JAVA_HOME"
 
 export VERSION="1.0.2-SNAPSHOT"
 
