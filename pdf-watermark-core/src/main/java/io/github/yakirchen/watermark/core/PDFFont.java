@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 
 /**
  * PDFFont
@@ -21,12 +22,12 @@ public class PDFFont {
         return classloader.getResourceAsStream(fontFile);
     }
 
-    public static Font loadFont(String fontFile) {
+    public static Optional<Font> loadFont(String fontFile) {
         var fontIS = load(fontFile);
         try {
-            return Font.createFont(Font.TRUETYPE_FONT, fontIS);
+            return Optional.of(Font.createFont(Font.TRUETYPE_FONT, fontIS));
         } catch (FontFormatException | IOException exp) {
-            return null;
+            return Optional.empty();
         }
     }
 }

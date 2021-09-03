@@ -11,14 +11,20 @@ module pdf.watermark.fx {
     requires javafx.fxml;
     requires javafx.swing;
     requires javafx.graphics;
+    requires javafx.web;
 
     uses javafx.application.Application;
 
     requires pdf.watermark.core;
 
-    opens io.github.yakirchen.watermark.fx
-            to javafx.controls, javafx.web, javafx.fxml, javafx.media, javafx.swing, javafx.graphics;
-
-    exports io.github.yakirchen.watermark.fx;
+    exports io.github.yakirchen.watermark;
+    opens io.github.yakirchen.watermark
+            to
+            javafx.controls,
+            javafx.web,
+            javafx.fxml,
+            javafx.media,
+            javafx.swing,
+            javafx.graphics;
 
 }

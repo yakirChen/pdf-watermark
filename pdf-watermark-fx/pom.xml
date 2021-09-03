@@ -15,7 +15,7 @@
 
     <properties>
         <moduleName>pdf.watermark.fx</moduleName>
-        <mainClass>io.github.yakirchen.watermark.fx.WatermarkApp</mainClass>
+        <mainClass>io.github.yakirchen.watermark.WatermarkAppFx</mainClass>
     </properties>
 
     <dependencies>

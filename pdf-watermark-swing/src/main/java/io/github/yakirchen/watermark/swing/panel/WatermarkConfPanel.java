@@ -140,7 +140,7 @@ public class WatermarkConfPanel extends JPanel {
         var cfg = new WatermarkConf();
         cfg.setText(this.textInput.getText());
         cfg.setAlpha(this.alphaSlider.getValue());
-        cfg.setColor(this.color);
+        cfg.setColor(WatermarkConfPanel.color);
         cfg.setFontSize(Optional.of(this.fontSizeSpinner.getValue()).map(String::valueOf).map(Integer::valueOf).orElse(130));
         return cfg;
     }

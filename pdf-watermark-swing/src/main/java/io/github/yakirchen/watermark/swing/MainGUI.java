@@ -24,7 +24,7 @@ public class MainGUI {
 
         for (String fontName : new String[]{PDFFont.FONT_A, /*PDFFont.FONT_B*/}) {
             System.out.println("注册字体 " + fontName);
-            graphicsEnv.registerFont(PDFFont.loadFont(fontName));
+            PDFFont.loadFont(fontName).ifPresent(graphicsEnv::registerFont);
         }
 
         var frame = new JFrame();
