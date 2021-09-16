@@ -1,22 +1,16 @@
 version=$1
 
-echo "JDK version $version"
-
+export VERSION="1.0.2-SNAPSHOT"
 export JAVA_HOME=`/usr/libexec/java_home -v $version`
 
-echo "JAVA_HOME $JAVA_HOME"
+echo "JDK Version $version"
+echo "JAVA HOME $JAVA_HOME"
 
-export VERSION="1.0.2-SNAPSHOT"
-
-mvn clean install -Dmaven.test.skip=true
-
-cd pdf-watermark-swing
-
-rm -rf libs
-
-mvn clean package -Dmaven.test.skip=true
-
-cp target/pdf-watermark-swing-${VERSION}.jar libs
+mvn clean install -Dmaven.test.skip=true && \
+  cd pdf-watermark-swing && \
+  rm -rf libs && \
+  mvn clean package -Dmaven.test.skip=true && \
+  cp target/pdf-watermark-swing-${VERSION}.jar libs
 
 jpackage --input libs/ \
   --name PDFWatermark \

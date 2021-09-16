@@ -12,5 +12,6 @@ module pdf.watermark.swing {
     requires jdk.unsupported;
 
     requires pdf.watermark.core;
+    requires pdf.watermark.api;
 
 }

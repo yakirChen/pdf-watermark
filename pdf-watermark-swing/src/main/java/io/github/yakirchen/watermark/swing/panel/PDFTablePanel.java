@@ -1,6 +1,6 @@
 package io.github.yakirchen.watermark.swing.panel;
 
-import io.github.yakirchen.watermark.swing.entity.PDFEntity;
+import io.github.yakirchen.watermark.api.PDFEntity;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;

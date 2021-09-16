@@ -13,9 +13,10 @@ module pdf.watermark.fx {
     requires javafx.graphics;
     requires javafx.web;
 
-    uses javafx.application.Application;
-
     requires pdf.watermark.core;
+    requires pdf.watermark.api;
+
+    uses javafx.application.Application;
 
     exports io.github.yakirchen.watermark;
     opens io.github.yakirchen.watermark

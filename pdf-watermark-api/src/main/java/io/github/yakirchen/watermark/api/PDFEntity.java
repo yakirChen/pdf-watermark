@@ -1,11 +1,17 @@
-package io.github.yakirchen.watermark.swing.entity;
+package io.github.yakirchen.watermark.api;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
  * PDFEntity
  *
  * @author yakir on 2021/07/12 11:52.
  */
-public class PDFEntity {
+public class PDFEntity implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = -3946611633016736682L;
 
     private String name;
     private String path;

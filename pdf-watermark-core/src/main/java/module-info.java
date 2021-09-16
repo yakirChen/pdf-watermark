@@ -11,13 +11,13 @@ module pdf.watermark.core {
     requires java.logging;
     requires jdk.unsupported;
 
-    requires pdfbox;
-    requires org.apache.pdfbox.tools;
-    requires fontbox;
     requires commons.logging;
-    requires org.apache.commons.io;
     requires info.picocli;
+    requires org.apache.pdfbox;
+    requires org.apache.pdfbox.tools;
     requires org.apache.pdfbox.debugger;
+    requires org.apache.fontbox;
+    requires org.apache.commons.io;
 
     exports io.github.yakirchen.watermark.core;
 

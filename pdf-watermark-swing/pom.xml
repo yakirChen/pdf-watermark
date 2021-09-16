@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>io.github.yakirchen</groupId>
+            <artifactId>pdf-watermark-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.yakirchen</groupId>
             <artifactId>pdf-watermark-core</artifactId>
         </dependency>
     </dependencies>
