@@ -1,6 +1,7 @@
 package io.github.yakirchen.watermark.swing.panel;
 
 import io.github.yakirchen.watermark.api.PDFEntity;
+import io.github.yakirchen.watermark.logging.Log;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -73,7 +74,7 @@ public class PDFTablePanel extends JScrollPane {
             final String path = (String) this.tableModel.getValueAt(i, 1);
 
             list.add(new PDFEntity().setName(name).setPath(path));
-            System.out.printf("Row: %d Name: %s Path: %s \n", i, name, path);
+            Log.info("Row: {} Name: {} Path: {}", i, name, path);
         }
         return list;
 

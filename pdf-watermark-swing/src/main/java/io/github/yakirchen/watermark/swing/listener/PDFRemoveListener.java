@@ -1,5 +1,6 @@
 package io.github.yakirchen.watermark.swing.listener;
 
+import io.github.yakirchen.watermark.logging.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 
 import java.awt.event.ActionEvent;
@@ -23,7 +24,7 @@ public record PDFRemoveListener(PDFTablePanel pdfTablePanel) implements ActionLi
         var when          = event.getWhen();
         var id            = event.getID();
 
-        System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
+        Log.info("id: {}, actionCommand: {}, modifiers: {}, when: {}", id, actionCommand, modifiers, when);
 
         pdfTablePanel.del();
     }

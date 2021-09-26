@@ -1,6 +1,7 @@
 package io.github.yakirchen.watermark.swing.listener;
 
 import io.github.yakirchen.watermark.api.PDFEntity;
+import io.github.yakirchen.watermark.logging.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 
 import javax.swing.JFileChooser;
@@ -46,7 +47,7 @@ public class PDFChooserListener implements ActionListener {
         var when          = event.getWhen();
         var id            = event.getID();
 
-        System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
+        Log.info("id: {}, actionCommand: {}, modifiers: {}, when: {}", id, actionCommand, modifiers, when);
 
         if (fileChooser.showOpenDialog(this.component) == JFileChooser.APPROVE_OPTION) {
             File[] fs = fileChooser.getSelectedFiles();// f为选择到的文件

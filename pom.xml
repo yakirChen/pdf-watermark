@@ -22,13 +22,15 @@
 
         <pdf.watermark.version>1.0.2-SNAPSHOT</pdf.watermark.version>
         <pdfbox.version>3.0.0-alpha2</pdfbox.version>
+        <commons.logging.version>1.2</commons.logging.version>
         <log4j.version>2.14.1</log4j.version>
-        <junit5.version>5.8.0</junit5.version>
+        <junit5.version>5.8.1</junit5.version>
     </properties>
 
     <modules>
         <module>pdf-watermark-api</module>
         <module>pdf-watermark-core</module>
+        <module>pdf-watermark-logging</module>
         <module>pdf-watermark-swing</module>
         <module>pdf-watermark-fx</module>
     </modules>
@@ -72,6 +74,11 @@
                 <artifactId>pdf-watermark-core</artifactId>
                 <version>${pdf.watermark.version}</version>
             </dependency>
+            <dependency>
+                <groupId>io.github.yakirchen</groupId>
+                <artifactId>pdf-watermark-logging</artifactId>
+                <version>${pdf.watermark.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
@@ -101,7 +108,7 @@
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
                 <maven.compiler.release>17</maven.compiler.release>
-                <javafx.version>17-ea+18</javafx.version>
+                <javafx.version>17.0.0.1</javafx.version>
             </properties>
         </profile>
         <profile>
@@ -113,7 +120,7 @@
                 <maven.compiler.source>18</maven.compiler.source>
                 <maven.compiler.target>18</maven.compiler.target>
                 <maven.compiler.release>18</maven.compiler.release>
-                <javafx.version>18-ea+2</javafx.version>
+                <javafx.version>18-ea+3</javafx.version>
             </properties>
         </profile>
 

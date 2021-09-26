@@ -1,5 +1,7 @@
 package io.github.yakirchen.watermark.swing;
 
+import io.github.yakirchen.watermark.logging.Log;
+
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -24,14 +26,14 @@ public class WatermarkApp {
             System.setProperty("com.apple.mrj.application.apple.menu.about.name", "About");
             System.setProperty("com.apple.mrj.application.live-resize", "true");
             var laf = UIManager.getSystemLookAndFeelClassName();
-            System.out.println("Look & Feel " + laf);
+            Log.info("Look & Feel {}", laf);
             UIManager.setLookAndFeel(laf);
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            System.out.println("Exception: " + e.getMessage());
+            Log.error("Exception: ", e);
         }
 
         var systemTray = SystemTray.isSupported();
-        System.out.println("SystemTray is " + (systemTray ? "" : "not ") + "supported");
+        Log.info("SystemTray is {}", (systemTray ? "" : "not ") + "supported");
 
         SwingUtilities.invokeLater(MainGUI::root);
 

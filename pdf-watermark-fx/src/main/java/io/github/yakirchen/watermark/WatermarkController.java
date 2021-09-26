@@ -4,6 +4,7 @@ import io.github.yakirchen.watermark.api.PDFEntity;
 import io.github.yakirchen.watermark.core.PDFManager;
 import io.github.yakirchen.watermark.core.PDFWatermark;
 import io.github.yakirchen.watermark.core.Watermark;
+import io.github.yakirchen.watermark.logging.Log;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -147,7 +148,6 @@ public class WatermarkController implements Initializable {
 
         List<PDFEntity> pdfEntityList = this.pdfTable.getItems();
 
-
         var color = colorPicker.getValue();
         var watermark = new Watermark()
                 .setAlpha((float) color.getOpacity())
@@ -185,6 +185,8 @@ public class WatermarkController implements Initializable {
                     return pdfEntity;
                 })
                 .collect(Collectors.toList());
+
+        Log.info("选择文件数量: {}", entities.size());
 
         TABLE_DATA.addAll(entities);
     }

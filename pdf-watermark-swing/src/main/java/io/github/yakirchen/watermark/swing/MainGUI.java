@@ -1,6 +1,7 @@
 package io.github.yakirchen.watermark.swing;
 
 import io.github.yakirchen.watermark.core.PDFFont;
+import io.github.yakirchen.watermark.logging.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFActionPanel;
 import io.github.yakirchen.watermark.swing.panel.PDFPreviewPanel;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
@@ -23,7 +24,7 @@ public class MainGUI {
         GraphicsEnvironment graphicsEnv = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
         for (String fontName : new String[]{PDFFont.FONT_A, /*PDFFont.FONT_B*/}) {
-            System.out.println("注册字体 " + fontName);
+            Log.info("注册字体 {}", fontName);
             PDFFont.loadFont(fontName).ifPresent(graphicsEnv::registerFont);
         }
 

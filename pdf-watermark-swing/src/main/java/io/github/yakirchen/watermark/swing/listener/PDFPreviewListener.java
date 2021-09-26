@@ -3,6 +3,7 @@ package io.github.yakirchen.watermark.swing.listener;
 import io.github.yakirchen.watermark.core.PDFManager;
 import io.github.yakirchen.watermark.core.PDFWatermark;
 import io.github.yakirchen.watermark.core.Watermark;
+import io.github.yakirchen.watermark.logging.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFPreviewPanel;
 import io.github.yakirchen.watermark.swing.panel.WatermarkConfPanel;
 
@@ -41,7 +42,7 @@ public record PDFPreviewListener(PDFPreviewPanel pdfPreviewPanel, WatermarkConfP
                     return null;
                 }
 
-                System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
+                Log.info("id: {}, actionCommand: {}, modifiers: {}, when: {}", id, actionCommand, modifiers, when);
 
                 var watermarkConf = confPanel.action();
                 var color         = watermarkConf.getColor();

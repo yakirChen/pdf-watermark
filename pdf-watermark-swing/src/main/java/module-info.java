@@ -11,7 +11,8 @@ module pdf.watermark.swing {
     requires java.logging;
     requires jdk.unsupported;
 
-    requires pdf.watermark.core;
     requires pdf.watermark.api;
+    requires pdf.watermark.core;
+    requires pdf.watermark.logging;
 
 }

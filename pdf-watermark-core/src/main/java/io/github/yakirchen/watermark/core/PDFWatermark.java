@@ -1,5 +1,6 @@
 package io.github.yakirchen.watermark.core;
 
+import io.github.yakirchen.watermark.logging.Log;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
@@ -38,7 +39,7 @@ public class PDFWatermark {
             //            var fontFamily = watermark.getFontFamily();
             var text = watermark.getText();
 
-            System.out.printf("水印文字:[%s]\n", text);
+            Log.info("水印文字:[{}]\n", text);
 
             var originFile = new File(origin);
 
@@ -111,7 +112,7 @@ public class PDFWatermark {
                 }
 
                 pdDoc.save(new File(targetFile));
-                System.out.println(targetFile);
+                Log.info(targetFile);
             } catch (IOException exp) {
                 exp.printStackTrace();
             }
@@ -128,7 +129,7 @@ public class PDFWatermark {
             //            var fontFamily = watermark.getFontFamily();
             var text = watermark.getText();
 
-            System.out.printf("水印文字:[%s]\n", text);
+            Log.info("水印文字:[{}]", text);
 
             try (var pdDoc = Loader.loadPDF(origin)) {
 

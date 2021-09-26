@@ -3,6 +3,7 @@ package io.github.yakirchen.watermark.swing.listener;
 import io.github.yakirchen.watermark.core.PDFWatermark;
 import io.github.yakirchen.watermark.core.Watermark;
 import io.github.yakirchen.watermark.api.PDFEntity;
+import io.github.yakirchen.watermark.logging.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 import io.github.yakirchen.watermark.swing.panel.WatermarkConfPanel;
 
@@ -30,7 +31,7 @@ public record PDFWatermarkListener(PDFTablePanel pdfTablePanel, WatermarkConfPan
         var when          = event.getWhen();
         var id            = event.getID();
 
-        System.out.printf("id: %d, actionCommand: %s, modifiers: %d, when: %d \n", id, actionCommand, modifiers, when);
+        Log.info("id: {}, actionCommand: {}, modifiers: {}, when: {}", id, actionCommand, modifiers, when);
 
         List<PDFEntity> pdfEntityList = this.pdfTablePanel.getAll();
         var             watermarkConf = confPanel.action();

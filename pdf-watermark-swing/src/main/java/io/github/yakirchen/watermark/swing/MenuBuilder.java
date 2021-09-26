@@ -1,5 +1,6 @@
 package io.github.yakirchen.watermark.swing;
 
+import io.github.yakirchen.watermark.logging.Log;
 import io.github.yakirchen.watermark.swing.listener.PDFChooserListener;
 import io.github.yakirchen.watermark.swing.listener.PDFRemoveListener;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
@@ -68,7 +69,7 @@ public class MenuBuilder {
         try {
             tray.add(trayIcon);
         } catch (AWTException e) {
-            System.out.println("TrayIcon could not be added.");
+            Log.info("TrayIcon could not be added.");
         }
     }
 

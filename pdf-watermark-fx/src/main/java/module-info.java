@@ -13,8 +13,9 @@ module pdf.watermark.fx {
     requires javafx.graphics;
     requires javafx.web;
 
-    requires pdf.watermark.core;
     requires pdf.watermark.api;
+    requires pdf.watermark.core;
+    requires pdf.watermark.logging;
 
     uses javafx.application.Application;
 
