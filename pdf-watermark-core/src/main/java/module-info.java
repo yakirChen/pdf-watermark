@@ -12,10 +12,10 @@ module pdf.watermark.core {
     requires jdk.unsupported;
 
     requires info.picocli;
-    requires org.apache.pdfbox;
+    requires pdfbox;
     requires org.apache.pdfbox.tools;
     requires org.apache.pdfbox.debugger;
-    requires org.apache.fontbox;
+    requires fontbox;
     requires org.apache.commons.io;
 
     requires pdf.watermark.logging;
