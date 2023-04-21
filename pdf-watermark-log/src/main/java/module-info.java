@@ -3,7 +3,7 @@
  *
  * @author yakir on 2021/09/17 12:35.
  */
-module pdf.watermark.logging {
+module pdf.watermark.log {
 
     requires java.logging;
     requires java.scripting;
@@ -15,8 +15,7 @@ module pdf.watermark.logging {
     requires org.apache.logging.log4j.jcl;
     requires org.apache.logging.log4j.jpl;
 
-    opens io.github.yakirchen.watermark.logging;
-
-    exports io.github.yakirchen.watermark.logging;
+    exports io.github.yakirchen.watermark.log;
+    opens io.github.yakirchen.watermark.log;
 
 }

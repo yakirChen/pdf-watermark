@@ -7,6 +7,8 @@ module pdf.watermark.api {
 
     requires java.base;
 
+    opens io.github.yakirchen.watermark.api;
+
     exports io.github.yakirchen.watermark.api;
 
 }

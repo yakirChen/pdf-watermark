@@ -10,15 +10,10 @@
         <version>1.0.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>pdf-watermark-logging</artifactId>
+    <artifactId>pdf-watermark-log</artifactId>
     <version>1.0.2-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>io.github.yakirchen</groupId>
-            <artifactId>pdf-watermark-api</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>

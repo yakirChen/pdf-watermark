@@ -12,13 +12,18 @@ module pdf.watermark.core {
     requires jdk.unsupported;
 
     requires info.picocli;
-    requires pdfbox;
+    requires org.apache.pdfbox;
     requires org.apache.pdfbox.tools;
     requires org.apache.pdfbox.debugger;
-    requires fontbox;
+    requires org.apache.fontbox;
     requires org.apache.commons.io;
 
-    requires pdf.watermark.logging;
+//    requires pdf.watermark.api;
+    requires pdf.watermark.log;
+
+//    uses io.github.yakirchen.watermark.api.PDFEntity;
+    uses io.github.yakirchen.watermark.log.Log;
+
 
     exports io.github.yakirchen.watermark.core;
 
