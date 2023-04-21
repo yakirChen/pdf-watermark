@@ -5,7 +5,7 @@
 
     <groupId>io.github.yakirchen</groupId>
     <artifactId>pdf-watermark</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
 
     <name>pdf-watermark</name>

@@ -1,6 +1,6 @@
 version=$1
 
-export VERSION="1.0.2-SNAPSHOT"
+export VERSION="1.1.0"
 export JAVA_HOME=`/usr/libexec/java_home -v $version`
 
 echo "JDK Version $version"
@@ -18,6 +18,7 @@ jpackage --input libs/ \
   --main-jar pdf-watermark-swing-${VERSION}.jar \
   --main-class io.github.yakirchen.watermark.swing.WatermarkApp \
   --type dmg \
+  --app-version ${VERSION} \
   --icon src/main/resources/icon.icns \
   --java-options '--enable-preview -Xdock:name=PDF水印 -XX:+UseZGC -Xms200M -Xmx200M' \
   --jlink-options '--strip-native-commands --strip-debug --no-man-pages --no-header-files --vm=server' \
