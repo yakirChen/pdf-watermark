@@ -1,6 +1,6 @@
 version=$1
 
-export VERSION="1.0.2-SNAPSHOT"
+export VERSION="1.1.0"
 export JAVA_HOME=`/usr/libexec/java_home -v $version`
 
 echo "JDK Version $version"

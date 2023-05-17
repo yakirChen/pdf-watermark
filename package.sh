@@ -20,7 +20,7 @@ jpackage --input libs/ \
   --type dmg \
   --app-version ${VERSION} \
   --icon src/main/resources/icon.icns \
-  --java-options '--enable-preview -Xdock:name=PDF水印 -XX:+UseZGC -Xms200M -Xmx200M' \
+  --java-options '--enable-preview -Xdock:name=PDF水印 -XX:+UseG1GC -Xms200M -Xmx200M' \
   --jlink-options '--strip-native-commands --strip-debug --no-man-pages --no-header-files --vm=server' \
   --module-path ${JAVA_HOME}/jmods \
   --add-modules java.desktop,jdk.unsupported,java.xml,java.logging,jdk.unsupported.desktop

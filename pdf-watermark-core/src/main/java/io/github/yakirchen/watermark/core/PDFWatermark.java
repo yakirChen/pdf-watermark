@@ -48,7 +48,7 @@ public class PDFWatermark {
                 pdDoc.setAllSecurityToBeRemoved(true);
 
                 var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_A));
-                //                var fontHanaMinA = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
+//                var fontHanaMinB = PDType0Font.load(pdDoc, PDFFont.load(PDFFont.FONT_B));
 
                 for (var page : pdDoc.getPages()) {
                     try (var cs = new PDPageContentStream(pdDoc, page, PDPageContentStream.AppendMode.APPEND, true, true)) {
