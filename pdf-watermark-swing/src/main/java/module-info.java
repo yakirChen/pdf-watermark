@@ -13,6 +13,5 @@ module pdf.watermark.swing {
 
     requires pdf.watermark.api;
     requires pdf.watermark.core;
-    requires pdf.watermark.log;
 
 }

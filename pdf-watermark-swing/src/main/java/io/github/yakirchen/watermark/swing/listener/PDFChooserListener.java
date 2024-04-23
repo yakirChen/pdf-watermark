@@ -1,7 +1,7 @@
 package io.github.yakirchen.watermark.swing.listener;
 
 import io.github.yakirchen.watermark.api.PDFEntity;
-import io.github.yakirchen.watermark.log.Log;
+import io.github.yakirchen.watermark.core.log.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 
 import javax.swing.JFileChooser;

@@ -1,6 +1,6 @@
 package io.github.yakirchen.watermark.swing.listener;
 
-import io.github.yakirchen.watermark.log.Log;
+import io.github.yakirchen.watermark.core.log.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFTablePanel;
 
 import java.awt.event.ActionEvent;

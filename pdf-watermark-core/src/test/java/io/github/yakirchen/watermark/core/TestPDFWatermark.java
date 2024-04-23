@@ -12,15 +12,15 @@ public class TestPDFWatermark {
     @Test
     public void test0() {
 
-        String origin = "/Volumes/sm/work/shushi/Oinone7天从入门到精通-PDF.pdf";
+        String origin = "/Users/yakir/Developer/think/pdf-watermark/docs/test.pdf";
 
-        var text = "Oinone-西安华越";
+        var text = "水印";
 
         var watermark = new Watermark()
                 .setOrigin(origin)
                 .setAlpha(0.35f)
-                .setColorRGB(225, 0, 0)
-                .setFontSize(60)
+                .setColorRGB(0, 0, 0)
+                .setFontSize(50)
                 .setText(text);
 
         PDFWatermark.builder(watermark)

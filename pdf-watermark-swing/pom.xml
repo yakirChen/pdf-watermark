@@ -71,6 +71,13 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <compilerArgs>
+                        <arg>--release</arg>
+                        <arg>21</arg>
+                        <arg>--enable-preview</arg>
+<!--                        <arg>&#45;&#45;add-modules</arg>-->
+<!--                        <arg>jdk.incubator.concurrent</arg>-->
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

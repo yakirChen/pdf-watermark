@@ -1,6 +1,6 @@
 package io.github.yakirchen.watermark.core;
 
-import io.github.yakirchen.watermark.log.Log;
+import io.github.yakirchen.watermark.core.log.Log;
 import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;

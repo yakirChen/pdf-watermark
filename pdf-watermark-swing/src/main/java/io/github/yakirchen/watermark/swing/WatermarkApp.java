@@ -1,6 +1,6 @@
 package io.github.yakirchen.watermark.swing;
 
-import io.github.yakirchen.watermark.log.Log;
+import io.github.yakirchen.watermark.core.log.Log;
 
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;

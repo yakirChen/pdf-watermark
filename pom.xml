@@ -13,28 +13,28 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.toolchains.version>3.1.0</maven.toolchains.version>
-        <maven.jar.version>3.3.0</maven.jar.version>
-        <maven.annotations.version>3.9.0</maven.annotations.version>
-        <maven.compiler.version>3.11.0</maven.compiler.version>
-        <maven.install.version>3.1.1</maven.install.version>
+        <maven.toolchains.version>3.2.0</maven.toolchains.version>
+        <maven.jar.version>3.4.1</maven.jar.version>
+        <maven.annotations.version>3.13.1</maven.annotations.version>
+        <maven.compiler.version>3.13.0</maven.compiler.version>
+        <maven.install.version>3.1.2</maven.install.version>
         <maven.javafx.version>0.0.8</maven.javafx.version>
-        <maven.exec.version>3.1.0</maven.exec.version>
-        <maven.enforcer.version>3.3.0</maven.enforcer.version>
-        <maven.dependency.version>3.6.0</maven.dependency.version>
+        <maven.exec.version>3.3.0</maven.exec.version>
+        <maven.enforcer.version>3.5.0</maven.enforcer.version>
+        <maven.dependency.version>3.7.0</maven.dependency.version>
 
+        <asm.version>9.7</asm.version>
         <pdf.watermark.version>1.1.0</pdf.watermark.version>
-        <pdfbox.version>3.0.0-beta1</pdfbox.version>
+        <pdfbox.version>3.0.0</pdfbox.version>
         <jbig2.imageio.version>3.0.4</jbig2.imageio.version>
         <commons.logging.version>1.2</commons.logging.version>
-        <log4j.version>2.20.0</log4j.version>
-        <junit5.version>5.10.0</junit5.version>
+        <log4j.version>2.23.1</log4j.version>
+        <junit5.version>5.10.2</junit5.version>
     </properties>
 
     <modules>
         <module>pdf-watermark-api</module>
         <module>pdf-watermark-core</module>
-        <module>pdf-watermark-log</module>
         <module>pdf-watermark-swing</module>
         <module>pdf-watermark-fx</module>
     </modules>
@@ -53,7 +53,17 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.pdfbox</groupId>
-                <artifactId>io</artifactId>
+                <artifactId>pdfbox-preflight</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox-preflight-app</artifactId>
+                <version>${pdfbox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.pdfbox</groupId>
+                <artifactId>pdfbox-io</artifactId>
                 <version>${pdfbox.version}</version>
             </dependency>
             <dependency>
@@ -86,11 +96,6 @@
             <dependency>
                 <groupId>io.github.yakirchen</groupId>
                 <artifactId>pdf-watermark-core</artifactId>
-                <version>${pdf.watermark.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.yakirchen</groupId>
-                <artifactId>pdf-watermark-log</artifactId>
                 <version>${pdf.watermark.version}</version>
             </dependency>
 
@@ -128,16 +133,19 @@
                 <maven.compiler.source>21</maven.compiler.source>
                 <maven.compiler.target>21</maven.compiler.target>
                 <maven.compiler.release>21</maven.compiler.release>
-                <javafx.version>21-ea+24</javafx.version>
+                <javafx.version>21.0.3</javafx.version>
             </properties>
         </profile>
         <profile>
             <id>17</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <properties>
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
                 <maven.compiler.release>17</maven.compiler.release>
-                <javafx.version>17.0.7</javafx.version>
+                <javafx.version>17.0.11</javafx.version>
             </properties>
         </profile>
         <!-- os -->
@@ -147,6 +155,7 @@
                 <os>
                     <name>linux</name>
                 </os>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <javafx.platform>linux</javafx.platform>
@@ -155,10 +164,10 @@
         <profile>
             <id>macosx</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
                 <os>
                     <name>mac os x</name>
                 </os>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
                 <javafx.platform>mac</javafx.platform>
@@ -170,6 +179,7 @@
                 <os>
                     <family>windows</family>
                 </os>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <javafx.platform>win</javafx.platform>
@@ -185,6 +195,9 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <compilerArgs>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -199,7 +212,7 @@
                         <configuration>
                             <rules>
                                 <requireMavenVersion>
-                                    <version>[3.8.0,)</version>
+                                    <version>[3.9.0,)</version>
                                 </requireMavenVersion>
                             </rules>
                         </configuration>
@@ -244,6 +257,18 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven.compiler.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.ow2.asm</groupId>
+                            <artifactId>asm</artifactId>
+                            <version>${asm.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.ow2.asm</groupId>
+                            <artifactId>asm-commons</artifactId>
+                            <version>${asm.version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

@@ -26,7 +26,7 @@ import java.util.Optional;
  */
 public class WatermarkConfPanel extends JPanel {
 
-    private static final int   DEFAULT_ALPHA = (int) (255 * 0.2);
+    private static final int   DEFAULT_ALPHA = Double.valueOf(255 * 0.2).intValue();
     private static final Color DEFAULT_COLOR = new Color(225, 0, 0, DEFAULT_ALPHA);
 
     private final JTextField textInput;

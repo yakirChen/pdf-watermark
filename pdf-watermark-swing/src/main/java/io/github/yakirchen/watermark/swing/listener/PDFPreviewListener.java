@@ -3,7 +3,7 @@ package io.github.yakirchen.watermark.swing.listener;
 import io.github.yakirchen.watermark.core.PDFManager;
 import io.github.yakirchen.watermark.core.PDFWatermark;
 import io.github.yakirchen.watermark.core.Watermark;
-import io.github.yakirchen.watermark.log.Log;
+import io.github.yakirchen.watermark.core.log.Log;
 import io.github.yakirchen.watermark.swing.panel.PDFPreviewPanel;
 import io.github.yakirchen.watermark.swing.panel.WatermarkConfPanel;
 

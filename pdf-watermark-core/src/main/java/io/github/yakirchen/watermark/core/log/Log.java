@@ -1,4 +1,4 @@
-package io.github.yakirchen.watermark.log;
+package io.github.yakirchen.watermark.core.log;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

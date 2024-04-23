@@ -1,3 +1,5 @@
+import io.github.yakirchen.watermark.core.log.Log;
+
 /**
  * module-info
  *
@@ -9,6 +11,7 @@ module pdf.watermark.core {
     requires java.desktop;
     requires java.xml;
     requires java.logging;
+    requires java.scripting;
     requires jdk.unsupported;
 
     requires org.apache.pdfbox;
@@ -19,11 +22,18 @@ module pdf.watermark.core {
 //    requires org.apache.commons.io;
 
 //    requires pdf.watermark.api;
-    requires pdf.watermark.log;
 
 //    uses io.github.yakirchen.watermark.api.PDFEntity;
-    uses io.github.yakirchen.watermark.log.Log;
+    uses Log;
 
+
+    requires org.apache.logging.log4j;
+    requires org.apache.logging.log4j.core;
+    requires org.apache.logging.log4j.jul;
+    requires org.apache.logging.log4j.jpl;
+
+    exports io.github.yakirchen.watermark.core.log;
     exports io.github.yakirchen.watermark.core;
 
+    opens io.github.yakirchen.watermark.core.log;
 }
